@@ -1,0 +1,13 @@
+.Render {
+  display: flex;
+  margin-top: 5rem;
+}
+
+.Title {
+  flex: 3;
+  font-size: 2.5rem;
+  font-family: Impact, fantasy;
+}
+.Image {
+  flex: 1;
+}

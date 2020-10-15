@@ -12,7 +12,7 @@ export default function NavBar() {
           exact={true}
           activeStyle={{
             fontWeight: "bold",
-            color: "blue",
+            color: "red",
           }}
         >
           Home
@@ -23,18 +23,18 @@ export default function NavBar() {
           to="/about"
           activeStyle={{
             fontWeight: "bold",
-            color: "blue",
+            color: "red",
           }}
         >
           About
         </NavLink>
       </Button>
-      <Button variant="info" className="Colored">
+      <Button variant="warning" className="Colored">
         <NavLink
           to="/discover"
           activeStyle={{
             fontWeight: "bold",
-            color: "blue",
+            color: "red",
           }}
         >
           Discover Movies

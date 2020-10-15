@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
+import "./DiscoverMovies.css";
 
 export default function DiscoverMoviesPage() {
   const [movies, setMovies] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   async function fetchMovies() {
-    // setMovies({ status: "loading" });
     const queryParam = encodeURIComponent(searchText);
     const response = await axios.get(
       `http://www.omdbapi.com/?apikey=2b3a45b9&s=${queryParam}`
@@ -23,7 +23,7 @@ export default function DiscoverMoviesPage() {
 
   return (
     <div>
-      <h1>Discover some movies!</h1>
+      <h1>Discover some movies! Type in a keyword:</h1>
       <p>
         <input
           value={searchText}
@@ -36,10 +36,14 @@ export default function DiscoverMoviesPage() {
       <div>
         {movies.map((movie) => {
           return (
-            <div>
+            <div className="Render">
               {/* {movie.imdbID} */}
-              <h1>{movie.Title}</h1>;
-              <img src={movie.Poster} alt={movie.Title}></img>{" "}
+              <img
+                className="Image"
+                src={movie.Poster}
+                alt={movie.Title}
+              ></img>{" "}
+              <h2 className="Title">{movie.Title}</h2>
             </div>
           );
         })}
