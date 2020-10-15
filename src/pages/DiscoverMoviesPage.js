@@ -10,7 +10,7 @@ export default function DiscoverMoviesPage() {
   async function fetchMovies() {
     const queryParam = encodeURIComponent(searchText);
     const response = await axios.get(
-      `http://www.omdbapi.com/?apikey=2b3a45b9&s=${queryParam}`
+      `https://www.omdbapi.com/?apikey=2b3a45b9&s=${queryParam}`
     );
     setMovies(response.data.Search);
   }
