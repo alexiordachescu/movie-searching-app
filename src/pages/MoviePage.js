@@ -10,7 +10,7 @@ export default function MoviePage() {
   useEffect(() => {
     async function fetchDetails() {
       const response = await axios.get(
-        `http://www.omdbapi.com/?i=${params.imdb_id}&apikey=2b3a45b9`
+        `https://www.omdbapi.com/?i=${params.imdb_id}&apikey=2b3a45b9`
       );
       setDetails(response.data);
     }
