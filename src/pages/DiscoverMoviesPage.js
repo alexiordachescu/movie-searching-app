@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import "./DiscoverMovies.css";
 
 export default function DiscoverMoviesPage() {
@@ -17,9 +19,9 @@ export default function DiscoverMoviesPage() {
 
   console.log("Locally stored:", movies);
   // IF not loaded yet, stop after the following conditional:
-  // if (movies.data === null) {
-  //   return <h2>{movies.status}</h2>;
-  // }
+  if (movies.data === null) {
+    return <h2>{movies.status}</h2>;
+  }
 
   return (
     <div>
@@ -37,13 +39,14 @@ export default function DiscoverMoviesPage() {
         {movies.map((movie) => {
           return (
             <div className="Render">
-              {/* {movie.imdbID} */}
-              <img
-                className="Image"
-                src={movie.Poster}
-                alt={movie.Title}
-              ></img>{" "}
-              <h2 className="Title">{movie.Title}</h2>
+              <Card style={{ width: "25rem" }}>
+                <Link to={`/movies/${movie.imdbID}`}>
+                  <Card.Img variant="top" src={movie.Poster} />
+                  <Card.Body>
+                    <Card.Title>{movie.Title}</Card.Title>
+                  </Card.Body>
+                </Link>
+              </Card>
             </div>
           );
         })}
