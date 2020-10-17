@@ -1,13 +1,5 @@
-.Container {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: flex-start;
-  margin-bottom: 3rem;
-}
-
-.Colored {
-  width: 100%;
-  font-size: 2rem;
-  height: 4rem;
-  margin: 1rem;
+.Nav {
+  background-color: #edf5e1;
+  position: relative;
+  height: auto;
 }

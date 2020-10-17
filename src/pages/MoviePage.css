@@ -1,25 +1,3 @@
-.Image {
-  display: flex;
-}
-
-.Header {
-  display: flex;
-}
-
-.Title {
-  flex: 4;
-  font-size: 3rem;
-  font-weight: bold;
-}
-
-.Gender {
-  flex: 1;
-}
-
-.Details {
-  margin-top: 3rem;
-}
-
-.Info {
-  font-weight: bold;
+.Sizing {
+  margin-top: 1.5rem;
 }

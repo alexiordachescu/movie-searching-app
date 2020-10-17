@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import "./MoviePage.css";
+import { Container, Row, Col } from "react-bootstrap";
 
 export default function MoviePage() {
   const params = useParams();
@@ -19,32 +20,39 @@ export default function MoviePage() {
   }, [params.imdb_id]);
 
   return (
-    <div>
-      <div className="Header">
-        <h2 className="Gender">{details.Genre}</h2>
-        <h1 className="Title">
-          {" "}
-          {details.Title}({details.Year})
-        </h1>
-      </div>
-      <div className="Image">
-        <img src={details.Poster} alt={details.Title}></img>
-        <div>
-          <div className="Details">
-            <h4 className="Info">IMDB Rating:</h4>
-            <h5>{details.imdbRating}</h5>
-            <h4 className="Info">Awards: </h4>
-            <h5>{details.Awards}</h5>
-            <h4 className="Info">Director: </h4>
-            <h5> {details.Director}</h5>
-            <h4 className="Info">Plot: </h4>
-            <h5>{details.Plot}</h5>
-            <h4 className="Info">Language: </h4>
-            <h5>{details.Language}</h5>
-            <h4 className="Info">Starring:</h4> <h5>{details.Actors}</h5>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Container>
+      <Row>
+        <Col className="Sizing">
+          <h1>
+            {details.Title} ({details.Year})
+          </h1>
+        </Col>
+      </Row>
+      <Row>
+        {" "}
+        <Col>
+          <h4>{details.Genre}</h4>
+        </Col>
+      </Row>{" "}
+      <Row>
+        {" "}
+        <Col className="Sizing">
+          <img src={details.Poster} alt={details.Title}></img>{" "}
+        </Col>{" "}
+        <Col className="Sizing">
+          <h5>IMDB Rating:</h5>
+          <p>{details.imdbRating}</p>
+          <h5>Awards: </h5>
+          <p>{details.Awards}</p>
+          <h5>Director: </h5>
+          <p>{details.Director}</p>
+          <h5>Plot:</h5>
+          <p>{details.Plot}</p>
+          <h5>Language:</h5> <p>{details.Language}</p>
+          <h5>Starring:</h5>
+          {details.Actors}
+        </Col>
+      </Row>
+    </Container>
   );
 }

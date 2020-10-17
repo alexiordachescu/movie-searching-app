@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import "./DiscoverMovies.css";
+import { Container, Row, Col } from "react-bootstrap";
 
 export default function DiscoverMoviesPage() {
   const [movies, setMovies] = useState([]);
@@ -16,8 +17,6 @@ export default function DiscoverMoviesPage() {
     );
     setMovies(response.data.Search);
   }
-
-  console.log("Locally stored:", movies);
   // IF not loaded yet, stop after the following conditional:
   if (movies.data === null) {
     return <h2>{movies.status}</h2>;
@@ -25,31 +24,37 @@ export default function DiscoverMoviesPage() {
 
   return (
     <div>
-      <h1>Discover some movies! Type in a keyword:</h1>
-      <p>
-        <input
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-        />
-        <Button variant="secondary" onClick={fetchMovies}>
-          Search
-        </Button>
-      </p>
+      <div className="Description">
+        <h1>Discover some movies! Type in a keyword:</h1>
+        <p>
+          <input
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+          <Button variant="secondary" onClick={fetchMovies}>
+            Search
+          </Button>
+        </p>
+      </div>
       <div>
-        {movies.map((movie) => {
-          return (
-            <div className="Render">
-              <Card style={{ width: "25rem" }}>
-                <Link to={`/movies/${movie.imdbID}`}>
-                  <Card.Img variant="top" src={movie.Poster} />
-                  <Card.Body>
-                    <Card.Title>{movie.Title}</Card.Title>
-                  </Card.Body>
-                </Link>
-              </Card>
-            </div>
-          );
-        })}
+        <Container className="Render">
+          <Row>
+            {movies.map((movie) => {
+              return (
+                <Col>
+                  <Card style={{ width: "18rem" }} className="Render">
+                    <Link to={`/movies/${movie.imdbID}`}>
+                      <Card.Img variant="top" src={movie.Poster} />
+                      <Card.Body>
+                        <Card.Title>{movie.Title}</Card.Title>
+                      </Card.Body>
+                    </Link>
+                  </Card>
+                </Col>
+              );
+            })}
+          </Row>
+        </Container>
       </div>
     </div>
   );
